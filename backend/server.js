@@ -40,10 +40,13 @@ const PORT = process.env.PORT || 3000;
 
 const pool = new Pool({
   user: process.env.DB_USER || "postgres",
-  host: process.env.DB_HOST || "localhost",
-  database: process.env.DB_NAME || "course_registration",
-  password: process.env.DB_PASSWORD || "password",
+  host: process.env.DB_HOST || "db.rnjnwietzfevctixxfsr.supabase.co", // chắc chắn là host Supabase
+  database: process.env.DB_NAME || "postgres",
+  password: process.env.DB_PASSWORD || "13082005@Tai",
   port: process.env.DB_PORT || 5432,
+  ssl: {
+    rejectUnauthorized: false, // cần thiết với Supabase
+  },
 });
 
 // Test database connection
