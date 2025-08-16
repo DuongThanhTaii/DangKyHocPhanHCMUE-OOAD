@@ -43,7 +43,8 @@ const pool = new Pool({
   database: process.env.DB_NAME,
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT,
-  ssl: { rejectUnauthorized: false }, // bắt buộc với Supabase
+  ssl: { rejectUnauthorized: false },
+  family: 4,// bắt buộc với Supabase
 });
 
 pool.connect()
