@@ -28,11 +28,14 @@ function SystemPhase() {
 
   const fetchPhase = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/system/phase", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const res = await fetch(
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/system/phase",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       const data = await res.json();
       setCurrentPhase(data?.trang_thai_phase || 1);
     } catch (err) {
@@ -42,11 +45,14 @@ function SystemPhase() {
 
   const fetchSemesters = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/metadata/semesters", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const res = await fetch(
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/metadata/semesters",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       if (res.ok) {
         const data = await res.json();
         // Lấy danh sách niên khóa duy nhất
@@ -84,14 +90,17 @@ function SystemPhase() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:3000/api/system/phase", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify({ phase: Number(selectedPhase) }),
-      });
+      const res = await fetch(
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/system/phase",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify({ phase: Number(selectedPhase) }),
+        }
+      );
 
       const data = await res.json();
 
@@ -110,7 +119,7 @@ function SystemPhase() {
     e.preventDefault();
     try {
       const res = await fetch(
-        "http://localhost:3000/api/system/set-current-semester",
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/system/set-current-semester",
         {
           method: "PUT",
           headers: {

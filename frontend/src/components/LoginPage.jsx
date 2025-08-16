@@ -14,16 +14,19 @@ function LoginPage() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:3000/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          tenDangNhap: username,
-          matKhau: password,
-        }),
-      });
+      const res = await fetch(
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            tenDangNhap: username,
+            matKhau: password,
+          }),
+        }
+      );
 
       const data = await res.json();
 

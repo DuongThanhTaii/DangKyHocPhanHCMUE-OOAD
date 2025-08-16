@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "../css/reset.css";
@@ -33,7 +32,7 @@ const ModalCapNhatMonHoc = ({ onClose, monHocId }) => {
     const fetchMonHoc = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/show-update-mon-hoc/${monHocId}`,
+          `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/show-update-mon-hoc/${monHocId}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -83,9 +82,14 @@ const ModalCapNhatMonHoc = ({ onClose, monHocId }) => {
   useEffect(() => {
     const fetchKhoa = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/khoa", {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        });
+        const res = await axios.get(
+          "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/khoa",
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
 
         if (Array.isArray(res.data) && res.data.length > 0) {
           setDanhSachKhoa(res.data);
@@ -104,7 +108,7 @@ const ModalCapNhatMonHoc = ({ onClose, monHocId }) => {
     const fetchNganh = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/khoa/${formData.khoa_id}/nganh`,
+          `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/khoa/${formData.khoa_id}/nganh`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -140,7 +144,7 @@ const ModalCapNhatMonHoc = ({ onClose, monHocId }) => {
     try {
       // Sửa URL API tại đây để khớp với backend
       await axios.put(
-        `http://localhost:3000/api/update-mon-hoc/${monHocId}`,
+        `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/update-mon-hoc/${monHocId}`,
         { ...formData, nganh_ids: selectedNganhIds },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },

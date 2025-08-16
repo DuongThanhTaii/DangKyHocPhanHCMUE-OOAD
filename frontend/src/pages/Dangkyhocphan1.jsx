@@ -24,7 +24,7 @@ function HocPhanDaGhiDanh({ onChonHocPhan }) {
   const fetchHocPhan = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:3000/api/dang-ky/available",
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/dang-ky/available",
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }
@@ -40,9 +40,12 @@ function HocPhanDaGhiDanh({ onChonHocPhan }) {
 
   const fetchDaDangKy = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/dang-ky/my", {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      const res = await axios.get(
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/dang-ky/my",
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      );
       setDaDangKyList(res.data);
     } catch {
       openNotify("Lỗi khi tải danh sách đã đăng ký.", "error");
@@ -51,9 +54,12 @@ function HocPhanDaGhiDanh({ onChonHocPhan }) {
 
   const handleHuyDangKy = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/dang-ky/${id}`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      await axios.delete(
+        `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/dang-ky/${id}`,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      );
       openNotify("Đã hủy đăng ký.", "success");
       fetchDaDangKy();
       fetchHocPhan(); // cập nhật lại học phần chưa đăng ký

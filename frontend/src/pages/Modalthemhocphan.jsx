@@ -50,9 +50,14 @@ const ModalThemMonHoc = ({ onClose }) => {
   useEffect(() => {
     const fetchKhoa = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/khoa", {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        });
+        const res = await axios.get(
+          "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/khoa",
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
 
         console.log("Danh sách ngành trả về:", res.data);
 
@@ -75,7 +80,7 @@ const ModalThemMonHoc = ({ onClose }) => {
     const fetchNganh = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/khoa/${formData.khoa_id}/nganh`,
+          `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/khoa/${formData.khoa_id}/nganh`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -111,10 +116,13 @@ const ModalThemMonHoc = ({ onClose }) => {
 
   const handleSubmit = async () => {
     try {
-      await axios.post("http://localhost:3000/api/tao-mon-hoc", {
-        ...formData,
-        nganh_ids: selectedNganhIds,
-      });
+      await axios.post(
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/tao-mon-hoc",
+        {
+          ...formData,
+          nganh_ids: selectedNganhIds,
+        }
+      );
       openNotify("Thêm môn học thành công", "success");
       onClose();
     } catch (error) {
@@ -129,7 +137,10 @@ const ModalThemMonHoc = ({ onClose }) => {
     data.append("file", excelFile);
 
     try {
-      await axios.post("http://localhost:3000/api/upload-mon-hoc", data);
+      await axios.post(
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/upload-mon-hoc",
+        data
+      );
       openNotify("Tải lên môn học từ Excel thành công", "success");
       onClose();
     } catch (error) {

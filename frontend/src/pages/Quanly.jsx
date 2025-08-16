@@ -69,25 +69,25 @@ function QuanLy() {
   //   try {
   //     if (currentView === "sv") {
   //       const res = await axios.get(
-  //         "http://localhost:3000/api/lay-ds-sinh-vien"
+  //         "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/lay-ds-sinh-vien"
   //       );
   //       const data = Array.isArray(res.data) ? res.data : res.data.data;
   //       setDsSinhVien(data || []);
   //     } else if (currentView === "gv") {
   //       const res = await axios.get(
-  //         "http://localhost:3000/api/lay-ds-giang-vien"
+  //         "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/lay-ds-giang-vien"
   //       );
   //       const data = Array.isArray(res.data) ? res.data : res.data.data;
   //       setDsGiangVien(data || []);
   //     } else if (currentView === "hp") {
   //       const res = await axios.get(
-  //         "http://localhost:3000/api/lay-ds-hoc-phan"
+  //         "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/lay-ds-hoc-phan"
   //       );
   //       const data = Array.isArray(res.data) ? res.data : res.data.data;
   //       setDsHocPhan(data || []);
   //     } else if (currentView === "lhp") {
   //       const res = await axios.get(
-  //         "http://localhost:3000/api/thong-ke-lop-hoc-phan"
+  //         "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/thong-ke-lop-hoc-phan"
   //       );
   //       const data = Array.isArray(res.data) ? res.data : res.data.data;
   //       setDsLopHocPhan(data || []);
@@ -103,26 +103,26 @@ function QuanLy() {
     try {
       if (currentView === "sv") {
         const res = await axios.get(
-          "http://localhost:3000/api/lay-ds-sinh-vien"
+          "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/lay-ds-sinh-vien"
         );
         const data = Array.isArray(res.data) ? res.data : res.data.data;
         setDsSinhVien(data || []);
       } else if (currentView === "gv") {
         const res = await axios.get(
-          "http://localhost:3000/api/lay-ds-giang-vien"
+          "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/lay-ds-giang-vien"
         );
         const data = Array.isArray(res.data) ? res.data : res.data.data;
         setDsGiangVien(data || []);
       } else if (currentView === "hp") {
         const res = await axios.get(
-          "http://localhost:3000/api/lay-ds-hoc-phan"
+          "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/lay-ds-hoc-phan"
         );
         const data = Array.isArray(res.data) ? res.data : res.data.data;
         setDsHocPhan(data || []);
       } else if (currentView === "lhp") {
         // Gọi API với tham số học kỳ và niên khóa
         const res = await axios.get(
-          `http://localhost:3000/api/thong-ke-lop-hoc-phan?hocKy=${selectedHocKy}&nienKhoa=${selectedNienKhoa}`
+          `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/thong-ke-lop-hoc-phan?hocKy=${selectedHocKy}&nienKhoa=${selectedNienKhoa}`
         );
         const data = Array.isArray(res.data) ? res.data : res.data.data;
         setDsLopHocPhan(data || []);
@@ -163,7 +163,7 @@ function QuanLy() {
       setShowConfirmModal(false);
       try {
         await axios.delete(
-          `http://localhost:3000/api/xoa-sinh-vien/${maSoSV}`,
+          `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/xoa-sinh-vien/${maSoSV}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -190,7 +190,7 @@ function QuanLy() {
         setShowConfirmModal(false);
         try {
           await axios.delete(
-            `http://localhost:3000/api/xoa-giang-vien/${maNhanVien}`,
+            `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/xoa-giang-vien/${maNhanVien}`,
             {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -215,9 +215,14 @@ function QuanLy() {
     confirmDelete(`Bạn có chắc muốn xóa học phần này?`, async () => {
       setShowConfirmModal(false);
       try {
-        await axios.delete(`http://localhost:3000/api/xoa-mon-hoc/${id}`, {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        });
+        await axios.delete(
+          `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/xoa-mon-hoc/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
         setNotifyMessage("Xóa học phần thành công");
         setNotifyType("success");
         setShowNotifyModal(true);
@@ -235,9 +240,14 @@ function QuanLy() {
     confirmDelete("Bạn có chắc muốn xóa lớp học phần này?", async () => {
       setShowConfirmModal(false);
       try {
-        await axios.delete(`http://localhost:3000/api/xoa-lop-hoc-phan/${id}`, {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        });
+        await axios.delete(
+          `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/xoa-lop-hoc-phan/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
         setNotifyMessage("Xóa lớp học phần thành công");
         setNotifyType("success");
         setShowNotifyModal(true);
@@ -347,7 +357,7 @@ function QuanLy() {
         console.log("Dữ liệu gửi đi:", dataToSend);
 
         const res = await fetch(
-          `http://localhost:3000/api/pdt/cap-nhat-lop-hoc-phan/${editingRowId}`,
+          `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/pdt/cap-nhat-lop-hoc-phan/${editingRowId}`,
           {
             method: "PUT",
             headers: {

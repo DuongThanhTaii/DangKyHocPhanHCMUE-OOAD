@@ -38,7 +38,7 @@ function DuyetHocPhan() {
     setLoading(true);
     try {
       const res = await fetch(
-        `http://localhost:3000/api/de-xuat-hoc-phan?idHocKy=${hocKyId}`,
+        `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/de-xuat-hoc-phan?idHocKy=${hocKyId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -71,11 +71,14 @@ function DuyetHocPhan() {
   const fetchSemesters = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:3000/api/metadata/semesters", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const res = await fetch(
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/metadata/semesters",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       if (!res.ok) {
         throw new Error(`Lỗi: ${res.status} - ${res.statusText}`);
       }
@@ -167,7 +170,7 @@ function DuyetHocPhan() {
       });
 
       const res = await fetch(
-        `http://localhost:3000/api/de-xuat-hoc-phan/${id}/approve`,
+        `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/de-xuat-hoc-phan/${id}/approve`,
         {
           method: "PUT",
           headers: {
@@ -214,7 +217,7 @@ function DuyetHocPhan() {
 
     try {
       const res = await fetch(
-        "http://localhost:3000/api/de-xuat-hoc-phan/bulk-update",
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/de-xuat-hoc-phan/bulk-update",
         {
           method: "POST",
           headers: {

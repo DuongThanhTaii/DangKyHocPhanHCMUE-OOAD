@@ -33,7 +33,7 @@ function TaoLopHocPhan() {
     setLoading(true);
     try {
       const res = await axios.get(
-        "http://localhost:3000/api/metadata/semesters",
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/metadata/semesters",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -75,7 +75,7 @@ function TaoLopHocPhan() {
     setLoading(true);
     try {
       const res = await axios.get(
-        "http://localhost:3000/api/pdt/tao-lop-hoc-phan/danh-sach",
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/pdt/tao-lop-hoc-phan/danh-sach",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -184,7 +184,7 @@ function TaoLopHocPhan() {
 
     try {
       await axios.post(
-        "http://localhost:3000/api/pdt/tao-lop-hoc-phan",
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/pdt/tao-lop-hoc-phan",
         { danhSachLop },
         {
           headers: {

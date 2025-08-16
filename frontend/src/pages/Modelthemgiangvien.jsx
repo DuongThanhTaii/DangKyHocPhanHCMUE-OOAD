@@ -23,11 +23,14 @@ const ModalThemGiangVien = ({ onClose }) => {
   useEffect(() => {
     const fetchKhoa = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/khoa", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        const res = await axios.get(
+          "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/khoa",
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
 
         if (Array.isArray(res.data) && res.data.length > 0) {
           setDanhSachKhoa(res.data);
@@ -53,7 +56,10 @@ const ModalThemGiangVien = ({ onClose }) => {
 
   const handleSubmit = async () => {
     try {
-      await axios.post("http://localhost:3000/api/tao-giang-vien", formData);
+      await axios.post(
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/tao-giang-vien",
+        formData
+      );
       openNotify("Thêm giảng viên thành công", "success");
       onClose();
     } catch (err) {
@@ -69,7 +75,7 @@ const ModalThemGiangVien = ({ onClose }) => {
 
     try {
       await axios.post(
-        "http://localhost:3000/api/upload-giang-vien",
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/upload-giang-vien",
         formDataUpload
       );
       openNotify("Tải file Excel thành công", "success");

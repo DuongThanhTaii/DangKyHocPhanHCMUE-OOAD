@@ -12,7 +12,9 @@ function DanhSachSinhVienLHP() {
   useEffect(() => {
     // API lấy danh sách sinh viên
     axios
-      .get(`http://localhost:3000/api/lay-danh-sach-sinh-vien-lhp/${id}`)
+      .get(
+        `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/lay-danh-sach-sinh-vien-lhp/${id}`
+      )
       .then((res) => {
         const sorted = res.data.sort((a, b) =>
           a.ho_ten.localeCompare(b.ho_ten, "vi", { sensitivity: "base" })
@@ -22,7 +24,9 @@ function DanhSachSinhVienLHP() {
 
     // API lấy mã lớp học phần (nếu có)
     axios
-      .get(`http://localhost:3000/api/chi-tiet-lop-hoc-phan/${id}`)
+      .get(
+        `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/chi-tiet-lop-hoc-phan/${id}`
+      )
       .then((res) => {
         setMaLop(res.data?.ma_lop || "");
       })

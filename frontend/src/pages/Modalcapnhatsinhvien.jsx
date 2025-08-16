@@ -26,7 +26,7 @@ const ModalCapNhatSinhVien = ({ id, isOpen, onClose }) => {
   // Lấy danh sách khoa
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/khoa", {
+      .get("https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/khoa", {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((res) => setDanhSachKhoa(Array.isArray(res.data) ? res.data : []))
@@ -37,9 +37,12 @@ const ModalCapNhatSinhVien = ({ id, isOpen, onClose }) => {
   useEffect(() => {
     if (!formData.khoa_id) return;
     axios
-      .get(`http://localhost:3000/api/khoa/${formData.khoa_id}/nganh`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      })
+      .get(
+        `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/khoa/${formData.khoa_id}/nganh`,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      )
       .then((res) => setDanhSachNganh(Array.isArray(res.data) ? res.data : []))
       .catch(() => setDanhSachNganh([]));
   }, [formData.khoa_id]);
@@ -50,13 +53,18 @@ const ModalCapNhatSinhVien = ({ id, isOpen, onClose }) => {
 
     const fetchData = async () => {
       try {
-        const resKhoa = await axios.get("http://localhost:3000/api/khoa", {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        });
+        const resKhoa = await axios.get(
+          "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/khoa",
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
         setDanhSachKhoa(Array.isArray(resKhoa.data) ? resKhoa.data : []);
 
         const resSV = await axios.get(
-          `http://localhost:3000/api/show-update-sinh-vien/${id}`,
+          `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/show-update-sinh-vien/${id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -67,7 +75,7 @@ const ModalCapNhatSinhVien = ({ id, isOpen, onClose }) => {
 
         if (sv.khoa_id) {
           const resNganh = await axios.get(
-            `http://localhost:3000/api/khoa/${sv.khoa_id}/nganh`,
+            `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/khoa/${sv.khoa_id}/nganh`,
             {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -104,7 +112,7 @@ const ModalCapNhatSinhVien = ({ id, isOpen, onClose }) => {
   const handleSubmit = async () => {
     try {
       await axios.put(
-        `http://localhost:3000/api/update-sinh-vien/${id}`,
+        `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/update-sinh-vien/${id}`,
         formData,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },

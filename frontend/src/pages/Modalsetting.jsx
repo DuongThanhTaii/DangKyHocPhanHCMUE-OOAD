@@ -55,7 +55,7 @@ function SettingModal({ isOpen, onClose }) {
       }
 
       const res = await axios.put(
-        "http://localhost:3000/api/auth/change-password", // URL API backend
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/auth/change-password", // URL API backend
         {
           oldPassword: oldPassword,
           newPassword: newPassword,
@@ -94,7 +94,7 @@ function SettingModal({ isOpen, onClose }) {
           }
 
           const res = await axios.post(
-            "http://localhost:3000/api/system/clean",
+            "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/system/clean",
             {},
             {
               headers: { Authorization: `Bearer ${token}` },

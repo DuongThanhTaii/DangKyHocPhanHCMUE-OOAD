@@ -15,10 +15,10 @@ function DeXuatHocPhanPage() {
   const [hocKy] = useState("1"); // default
   const [namHoc] = useState("2025-2026"); // default
 
-  // Cấu hình Fuse.js 
+  // Cấu hình Fuse.js
   const fuseOptions = {
     keys: ["ma_mon", "ten_mon"],
-    threshold: 0.3, 
+    threshold: 0.3,
   };
 
   const fuse = useMemo(() => new Fuse(monHocs, fuseOptions), [monHocs]);
@@ -26,11 +26,14 @@ function DeXuatHocPhanPage() {
   // Hàm lấy danh sách môn học từ API
   const fetchMonHocs = async () => {
     try {
-      const res = await fetch("http://localhost:3000/api/mon-hoc", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const res = await fetch(
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/mon-hoc",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
 
       const result = await res.json();
       if (res.ok && Array.isArray(result.data)) {
@@ -74,7 +77,7 @@ function DeXuatHocPhanPage() {
     // Nếu chưa có giảng viên của môn này thì fetch
     if (!giangViens[monHocId]) {
       const res = await fetch(
-        `http://localhost:3000/api/giang-vien/mon-hoc/${monHocId}`,
+        `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/giang-vien/mon-hoc/${monHocId}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -112,7 +115,7 @@ function DeXuatHocPhanPage() {
 
     try {
       const res = await fetch(
-        "http://localhost:3000/api/de-xuat-hoc-phan/multi",
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/de-xuat-hoc-phan/multi",
         {
           method: "POST",
           headers: {

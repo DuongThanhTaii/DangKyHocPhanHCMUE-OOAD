@@ -19,7 +19,7 @@ function ThongKeLopHocPhan() {
   const loadData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/thong-ke-lop-hoc-phan?hocKy=${selectedHocKy}&nienKhoa=${selectedNienKhoa}`
+        `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/thong-ke-lop-hoc-phan?hocKy=${selectedHocKy}&nienKhoa=${selectedNienKhoa}`
       );
       setDsLop(response.data);
     } catch (error) {

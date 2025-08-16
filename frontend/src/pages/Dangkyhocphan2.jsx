@@ -16,7 +16,7 @@ function LopHocPhanTheoHocPhan({ hocPhan }) {
   const fetchLopHocPhan = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:3000/api/dang-ky/available",
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/dang-ky/available",
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -35,7 +35,7 @@ function LopHocPhanTheoHocPhan({ hocPhan }) {
   const handleDangKy = async (lopHocPhanId) => {
     try {
       await axios.post(
-        "http://localhost:3000/api/dang-ky",
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/dang-ky",
         { lopHocPhanId },
         {
           headers: {
@@ -52,11 +52,14 @@ function LopHocPhanTheoHocPhan({ hocPhan }) {
 
   const handleHuyDangKy = async (lopHocPhanId) => {
     try {
-      await axios.delete(`http://localhost:3000/api/dang-ky/${lopHocPhanId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      await axios.delete(
+        `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/dang-ky/${lopHocPhanId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       openNotify("Đã hủy đăng ký", "success");
       fetchLopHocPhan();
     } catch (error) {

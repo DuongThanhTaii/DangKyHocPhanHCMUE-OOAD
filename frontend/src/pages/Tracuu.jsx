@@ -13,7 +13,7 @@ function TraCuu() {
     e.preventDefault();
     try {
       const res = await fetch(
-        `http://localhost:3000/api/mon-hoc/search?q=${encodeURIComponent(
+        `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/mon-hoc/search?q=${encodeURIComponent(
           searchValue
         )}`,
         {

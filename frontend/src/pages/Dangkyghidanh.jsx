@@ -30,12 +30,18 @@ function GhiDanhHocPhan() {
     try {
       const token = localStorage.getItem("token");
       const [hpRes, gdRes] = await Promise.all([
-        axios.get("http://localhost:3000/api/hoc-phan/co-the-ghi-danh", {
-          headers: { Authorization: `Bearer ${token}` },
-        }),
-        axios.get("http://localhost:3000/api/ghi-danh/my", {
-          headers: { Authorization: `Bearer ${token}` },
-        }),
+        axios.get(
+          "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/hoc-phan/co-the-ghi-danh",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        ),
+        axios.get(
+          "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/ghi-danh/my",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        ),
       ]);
 
       setHocPhanList(hpRes.data || []);
@@ -70,7 +76,7 @@ function GhiDanhHocPhan() {
       return openNotify("Chưa chọn học phần", "error");
     try {
       await axios.post(
-        "http://localhost:3000/api/ghi-danh",
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/ghi-danh",
         { hocPhanIds: selectedIds },
         {
           headers: {
@@ -93,9 +99,12 @@ function GhiDanhHocPhan() {
     try {
       const token = localStorage.getItem("token");
       for (const hocPhanId of selectedToCancelIds) {
-        await axios.delete(`http://localhost:3000/api/ghi-danh/${hocPhanId}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        await axios.delete(
+          `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/ghi-danh/${hocPhanId}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
       }
       openNotify("Hủy ghi danh thành công.", "success");
       setSelectedToCancelIds([]);

@@ -28,11 +28,14 @@ const ModalThemSinhVien = ({ onClose }) => {
   useEffect(() => {
     const fetchKhoa = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/khoa", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`, // hoặc lấy token từ context
-          },
-        });
+        const res = await axios.get(
+          "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/khoa",
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`, // hoặc lấy token từ context
+            },
+          }
+        );
 
         // Đảm bảo res.data là mảng trước khi set
         if (Array.isArray(res.data)) {
@@ -56,7 +59,7 @@ const ModalThemSinhVien = ({ onClose }) => {
     const fetchNganh = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/khoa/${formData.khoa_id}/nganh`,
+          `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/khoa/${formData.khoa_id}/nganh`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -86,7 +89,10 @@ const ModalThemSinhVien = ({ onClose }) => {
 
   const handleSubmit = async () => {
     try {
-      await axios.post("http://localhost:3000/api/tao-sinh-vien", formData);
+      await axios.post(
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/tao-sinh-vien",
+        formData
+      );
       openNotify("Thêm sinh viên thành công", "success");
       onClose();
     } catch (err) {
@@ -109,11 +115,15 @@ const ModalThemSinhVien = ({ onClose }) => {
     data.append("file", excelFile);
 
     try {
-      await axios.post("http://localhost:3000/api/upload-sinh-vien", data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await axios.post(
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/upload-sinh-vien",
+        data,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       openNotify("Tải lên file Excel thành công", "success");
       onClose();
     } catch (err) {

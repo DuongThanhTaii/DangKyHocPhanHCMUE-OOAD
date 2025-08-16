@@ -20,12 +20,15 @@ function LichSuDangKy() {
     if (currentHocKy) params.hocKy = currentHocKy;
 
     axios
-      .get("http://localhost:3000/api/lich-su-dang-ky", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        params: params,
-      })
+      .get(
+        "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/lich-su-dang-ky",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          params: params,
+        }
+      )
       .then((res) => {
         if (res.data.success) {
           setLichSu(res.data.data);
@@ -40,7 +43,7 @@ function LichSuDangKy() {
     const fetchAcademicTerms = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:3000/api/get-academic-terms",
+          "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/get-academic-terms",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`, // Thêm token vào header

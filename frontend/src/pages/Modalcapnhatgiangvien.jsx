@@ -22,9 +22,14 @@ const ModalCapNhatGiangVien = ({ giangVienId, onClose }) => {
   useEffect(() => {
     const fetchKhoa = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/khoa", {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        });
+        const res = await axios.get(
+          "https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/khoa",
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
         if (Array.isArray(res.data)) {
           setDanhSachKhoa(res.data);
         }
@@ -42,7 +47,7 @@ const ModalCapNhatGiangVien = ({ giangVienId, onClose }) => {
       const fetchGiangVien = async () => {
         try {
           const res = await axios.get(
-            `http://localhost:3000/api/show-update-giang-vien/${giangVienId}`,
+            `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/show-update-giang-vien/${giangVienId}`,
             {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -69,7 +74,7 @@ const ModalCapNhatGiangVien = ({ giangVienId, onClose }) => {
   const handleUpdate = async () => {
     try {
       await axios.put(
-        `http://localhost:3000/api/update-giang-vien/${giangVienId}`,
+        `https://dangkyhocphanhcmue-backend-ooad.onrender.com/api/update-giang-vien/${giangVienId}`,
         formData,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
