@@ -38,14 +38,21 @@ const PORT = process.env.PORT || 3000;
 // DATABASE CONNECTION
 // =============================================
 
+// const pool = new Pool({
+//   user: process.env.DB_USER || "postgres",
+//   host: process.env.DB_HOST || "db.rnjnwietzfevctixxfsr.supabase.co", // chắc chắn là host Supabase
+//   database: process.env.DB_NAME || "postgres",
+//   password: process.env.DB_PASSWORD || "13082005@Tai",
+//   port: process.env.DB_PORT || 5432,
+//   ssl: {
+//     rejectUnauthorized: false, // cần thiết với Supabase
+//   },
+// });
+
 const pool = new Pool({
-  user: process.env.DB_USER || "postgres",
-  host: process.env.DB_HOST || "db.rnjnwietzfevctixxfsr.supabase.co", // chắc chắn là host Supabase
-  database: process.env.DB_NAME || "postgres",
-  password: process.env.DB_PASSWORD || "13082005@Tai",
-  port: process.env.DB_PORT || 5432,
+  connectionString: process.env.DATABASE_URL,
   ssl: {
-    rejectUnauthorized: false, // cần thiết với Supabase
+    rejectUnauthorized: false,
   },
 });
 
