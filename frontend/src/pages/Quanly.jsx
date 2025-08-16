@@ -728,6 +728,7 @@ function QuanLy() {
                     <th>Ngày kết thúc</th>
                     <th>Tổng số tiết</th>
                     <th>Địa điểm</th>
+                    <th>Thao tác</th>
                   </tr>
                 </thead>
                 <tbody>
